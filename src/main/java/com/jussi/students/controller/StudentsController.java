@@ -18,13 +18,18 @@ public class StudentsController {
 	@GetMapping(value = "/hello")
 	public String printList(Model model) {
 		
-		ArrayList<Student> opiskelijat = new ArrayList<Student>();
-		opiskelijat.add(new Student("Jane", "Tarzan"));
-		opiskelijat.add(new Student("Me", "Tarzan"));
-		opiskelijat.add(new Student("Cheeta", "TheChimp"));
+		model.addAttribute("studentList", opiskelijaLista());
 		
-		model.addAttribute("studentList", opiskelijat);
 		return "hello";
+	}
+	
+	private ArrayList<Student> opiskelijaLista() {
+		ArrayList<Student> lista = new ArrayList<Student>();
+		lista.add(new Student("Jane", "Porter"));
+		lista.add(new Student("Me", "Tarzan"));
+		lista.add(new Student("Cheeta", "TheChimp"));
+		return lista;
+		
 	}
 	
 

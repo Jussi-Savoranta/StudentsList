@@ -1,22 +1,31 @@
 package com.jussi.students.controller;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 
 import com.jussi.students.domain.Student;
 
 @Controller
 public class StudentsController {
-	
-	Student studentJane = new Student("Jane", "Tarzan");
-	Student studentTarzan = new Student("Me", "Tarzan");
-	Student studentCheeta = new Student("Cheeta", "TheChimp");
 
-	@RequestMapping("/hello")
-	public String printList() {
+	
+	//@RequestMapping(value = "/hello", method = RequestMethod.GET)
+	@GetMapping(value = "/hello")
+	public String printList(Model model) {
 		
-		System.out.println(studentJane.toString());
+		ArrayList<Student> opiskelijat = new ArrayList<Student>();
+		opiskelijat.add(new Student("Jane", "Tarzan"));
+		opiskelijat.add(new Student("Me", "Tarzan"));
+		opiskelijat.add(new Student("Cheeta", "TheChimp"));
 		
+		model.addAttribute("studentList", opiskelijat);
 		return "hello";
 	}
+	
+
 }

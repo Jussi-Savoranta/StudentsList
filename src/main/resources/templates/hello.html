@@ -4,7 +4,14 @@
 	<title>Student list</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/> 
 </head>
-	<div>
-		<p th:text="'Hello, ' +${name} + '!'">
-	</div>
+<body>
+<p>Welome!</p>
+
+	<table>
+        <tr th:each="oppilas : ${studentList}">
+            <td th:text="${oppilas.firstName}"></td>
+            <td th:text="${oppilas.lastName}"></td>
+        </tr>
+    </table>
+	</body>
 </html>
